@@ -1,0 +1,163 @@
+{
+  "project": "LakehouseCost Copilot",
+  "skill_catalog": {
+    "Python": "Programming",
+    "pandas / NumPy": "Programming",
+    "Testing (pytest)": "Engineering practice",
+    "CI/CD (GitHub Actions)": "Engineering practice",
+    "Git": "Engineering practice",
+    "Technical documentation (ADRs)": "Engineering practice",
+    "Data modelling": "Data engineering",
+    "PySpark": "Data engineering",
+    "Delta Lake": "Data engineering",
+    "Databricks": "Data engineering",
+    "Azure ADLS Gen2": "Cloud",
+    "Azure Key Vault": "Cloud",
+    "Snowflake": "Data engineering",
+    "dbt": "Data engineering",
+    "Data quality testing": "Data engineering",
+    "Anomaly detection": "Analytics / ML",
+    "FinOps": "Domain",
+    "MCP (Model Context Protocol)": "AI engineering",
+    "LLM tool calling": "AI engineering",
+    "OpenAI SDK": "AI engineering",
+    "LangChain / LangGraph": "AI engineering",
+    "Prompt and conversation design": "AI engineering",
+    "Guardrails": "AI engineering",
+    "RAG": "AI engineering",
+    "LLM evaluation": "AI engineering",
+    "Funnel and A/B experiments": "AI engineering",
+    "FastAPI": "Backend integration",
+    "REST APIs": "Backend integration",
+    "WebSockets": "Backend integration",
+    "Webhooks and callbacks": "Backend integration",
+    "CRM / ticketing writes": "Backend integration",
+    "OAuth2 and JWT": "Backend integration",
+    "Structured logging and tracing": "Observability",
+    "Root-cause analysis": "Observability",
+    "SQL analysis": "Data fluency",
+    "Client workshops and stakeholder communication": "Client delivery",
+    "Solution documentation": "Client delivery",
+    "React": "Frontend",
+    "Docker": "Cloud",
+    "GCP (Cloud Run, Secret Manager)": "Cloud"
+  },
+  "phases": [
+    {
+      "id": 1,
+      "name": "Foundation and synthetic data",
+      "tasks": [
+        {"id": "1.1", "title": "Repo standards: packaging, lint, .gitignore", "status": "done",
+         "skills": ["Python", "Git"], "evidence": "pyproject.toml"},
+        {"id": "1.2", "title": "CI pipeline (ruff + pytest)", "status": "done",
+         "skills": ["CI/CD (GitHub Actions)", "Testing (pytest)"], "evidence": ".github/workflows/ci.yml"},
+        {"id": "1.3", "title": "Synthetic telemetry generator with planted incidents", "status": "done",
+         "skills": ["Python", "pandas / NumPy", "Data modelling", "FinOps"],
+         "evidence": "src/costcopilot/generator/telemetry.py"},
+        {"id": "1.4", "title": "Architecture doc and ADRs", "status": "done",
+         "skills": ["Technical documentation (ADRs)"], "evidence": "docs/architecture.md"},
+        {"id": "1.5", "title": "Project tracker (this system)", "status": "done",
+         "skills": ["Python", "Git", "Technical documentation (ADRs)"],
+         "evidence": "src/costcopilot/tracker.py"}
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Databricks bronze and silver",
+      "tasks": [
+        {"id": "2.1", "title": "Land raw files in ADLS Gen2 layout", "status": "planned",
+         "skills": ["Azure ADLS Gen2", "Databricks"]},
+        {"id": "2.2", "title": "Bronze ingestion (Delta, append-only)", "status": "planned",
+         "skills": ["PySpark", "Delta Lake"]},
+        {"id": "2.3", "title": "Silver: typed, deduplicated, unified cost grain", "status": "planned",
+         "skills": ["PySpark", "Data modelling", "Data quality testing"]}
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Snowflake gold layer",
+      "tasks": [
+        {"id": "3.1", "title": "Load silver into Snowflake", "status": "planned",
+         "skills": ["Snowflake"]},
+        {"id": "3.2", "title": "dbt gold marts with tests", "status": "planned",
+         "skills": ["dbt", "Data modelling", "Data quality testing"]}
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Detection and savings",
+      "tasks": [
+        {"id": "4.1", "title": "Anomaly detection scored against ground truth", "status": "planned",
+         "skills": ["Anomaly detection", "Python", "Testing (pytest)"]},
+        {"id": "4.2", "title": "Savings estimator", "status": "planned",
+         "skills": ["FinOps", "Python"]}
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Production agent core",
+      "tasks": [
+        {"id": "5.1", "title": "Tool-calling agent with versioned prompts and conversation design",
+         "status": "planned",
+         "skills": ["OpenAI SDK", "LLM tool calling", "Prompt and conversation design"]},
+        {"id": "5.2", "title": "LangGraph workflow: triage, investigate, recommend, escalate",
+         "status": "planned", "skills": ["LangChain / LangGraph", "LLM tool calling"]},
+        {"id": "5.3", "title": "Guardrails: read-only tools, input and output checks, PII masking",
+         "status": "planned", "skills": ["Guardrails", "Python"]},
+        {"id": "5.4", "title": "RAG over runbooks and platform docs with citations",
+         "status": "planned", "skills": ["RAG", "Python"]},
+        {"id": "5.5", "title": "MCP server exposing allow-listed tools", "status": "planned",
+         "skills": ["MCP (Model Context Protocol)", "Guardrails"]}
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Integration layer",
+      "tasks": [
+        {"id": "6.1", "title": "FastAPI service with REST endpoints and WebSocket streaming",
+         "status": "planned", "skills": ["FastAPI", "REST APIs", "WebSockets"]},
+        {"id": "6.2", "title": "Inbound webhooks and async callbacks with retries and idempotency",
+         "status": "planned", "skills": ["Webhooks and callbacks", "FastAPI"]},
+        {"id": "6.3", "title": "Ticket and CRM-style writes (Jira or ServiceNow mock, Slack alerts)",
+         "status": "planned", "skills": ["CRM / ticketing writes", "REST APIs"]},
+        {"id": "6.4", "title": "OAuth2 and JWT auth with role-based access", "status": "planned",
+         "skills": ["OAuth2 and JWT", "FastAPI"]}
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Observability and root-cause analysis",
+      "tasks": [
+        {"id": "7.1", "title": "Structured logs and traces for every agent step and tool call",
+         "status": "planned", "skills": ["Structured logging and tracing", "Python"]},
+        {"id": "7.2", "title": "Run-level metrics in SQL: latency, tokens, cost, failures",
+         "status": "planned", "skills": ["SQL analysis", "Structured logging and tracing"]},
+        {"id": "7.3", "title": "RCA playbook proving prompt vs platform vs data-pipeline cause",
+         "status": "planned", "skills": ["Root-cause analysis", "Solution documentation"]}
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Evaluation and funnel optimisation",
+      "tasks": [
+        {"id": "8.1", "title": "Golden set scored on completion, hallucination, latency, cost",
+         "status": "planned", "skills": ["LLM evaluation", "Testing (pytest)"]},
+        {"id": "8.2", "title": "Prompt A/B experiments with funnel report and recommendation",
+         "status": "planned", "skills": ["Funnel and A/B experiments", "SQL analysis"]}
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Client delivery and deployment",
+      "tasks": [
+        {"id": "9.1", "title": "React console: chat, evidence, run traces, eval dashboard",
+         "status": "planned", "skills": ["React"]},
+        {"id": "9.2", "title": "Containerise and deploy on GCP Cloud Run with Secret Manager",
+         "status": "planned", "skills": ["Docker", "GCP (Cloud Run, Secret Manager)"]},
+        {"id": "9.3", "title": "Client kit: workshop deck, integration guide, demo script",
+         "status": "planned",
+         "skills": ["Client workshops and stakeholder communication", "Solution documentation"]}
+      ]
+    }
+  ]
+}
